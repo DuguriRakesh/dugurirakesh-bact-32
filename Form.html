@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<h1 style="text-align: center; color:royalblue">Profile Form</h1>
+
+<body style="background-color: bisque;">
+  <form>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" required><br><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" required><br><br>
+
+    <label>Gender:</label>
+    <label for="male">
+      <input type="radio" id="male" name="gender" value="Male" required> Male
+    </label>
+    <label for="female">
+      <input type="radio" id="female" name="gender" value="Female" required> Female
+    </label><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" required><br><br>
+
+    <label>Hobbies:</label>
+    <label for="hobby1">
+      <input type="checkbox" id="hobby1" name="hobbies" value="Reading"> Reading
+    </label>
+    <label for="hobby2">
+      <input type="checkbox" id="hobby2" name="hobbies" value="Sports"> Sports
+    </label>
+    <label for="hobby3">
+      <input type="checkbox" id="hobby3" name="hobbies" value="Music"> Music
+    </label><br><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required><br><br>
+
+    <button type="button" onclick="displayValues()">Submit</button>
+  </form>
+
+  <div id="submittedValues"></div>
+
+  <script>
+    function displayValues() {
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var gender = document.querySelector('input[name="gender"]:checked').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone').value;
+      var hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+      var hobbiesArray = Array.from(hobbies).map(hobby => hobby.value);
+      var dob = document.getElementById('dob').value;
+
+      var submittedValues = document.getElementById('submittedValues');
+      submittedValues.innerHTML = "<strong>Submitted Values:</strong><br>" +
+        "First Name: " + firstName + "<br>" +
+        "Last Name: " + lastName + "<br>" +
+        "Gender: " + gender + "<br>" +
+        "Email: " + email + "<br>" +
+        "Phone: " + phone + "<br>" +
+        "Hobbies: " + hobbiesArray.join(", ") + "<br>" +
+        "Date of Birth: " + dob;
+    }
+  </script>
+</body>
+</html>
